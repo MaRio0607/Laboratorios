@@ -1,0 +1,74 @@
+body{
+    background-color: rgb(200, 225, 253);
+
+}
+.page-header{
+    border-style: dotted;
+    margin-bottom: 5px;
+    text-align:center;
+    color:white;
+    font-size: 25px;
+    font-style:initial;
+    font-family: sans-serif;
+    font-weight: bold;
+
+
+}
+
+.under-header{
+    margin-top: 10px;
+    font-size: 20px;
+    text-align:center;
+    
+}
+
+.perfilIMG{
+    padding: 15px;
+    float: left;
+
+}
+
+.objective{
+    padding: 10px;
+    background-color: rgb(178, 198, 221);
+}
+
+.experience{
+
+    padding: 10px;
+
+    background-color: rgb(160, 180, 202);
+}
+
+.education{
+    margin-top: 0px;
+    padding: 10px;
+    background-color: rgb(150, 169, 189);
+ 
+}
+
+.interest{
+    padding: 10px;
+    background-color: rgb(124, 142, 161);
+}
+
+
+#titleSection{
+    margin-top: 0px;
+    font-family: sans-serif;
+    color: white;
+}
+
+#headText{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+p{
+    font-family: sans-serif;
+}
+
+li{
+    font-family: sans-serif;
+}
