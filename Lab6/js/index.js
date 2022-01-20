@@ -2,7 +2,6 @@ $(document).ready(function(){
 
     $(".agregar").on('click', addNmae)
 
-
     function addNmae(e){
         e.preventDefault();
         let item =$("#newText").val();
