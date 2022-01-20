@@ -58,6 +58,8 @@ button{
 }
 .chec > p{
     text-decoration: line-through;
-}.itemShop{
+}
+
+.itemShop{
     font-style: italic;
 }

@@ -1,22 +1,34 @@
 $(document).ready(function(){
 
+    $(".agregar").on('click', addNmae)
 
-$(".agregar").click(function(){
-    var list = $(".lis");
-    $("container").append(list); 
-});
 
-$(".lis").on('click','.del', function(){
-    $(this).parent().remove()
+    function addNmae(e){
+        e.preventDefault();
+        let item =$("#newText").val();
+
+        if(item != ""){
+            $(".Lista").append(`
+            <li class= "lis">
+            <p class="itemShop"> ${item}</p>
+            <button class="checar">  check </button>
+            <button class="del"> delete </button>
+            `);
+        }
+
+    };
+
+
+    $(".Lista").on('click','.del', function(e){
+        e.preventDefault();
+        $(this).parent().remove()
+        
+    });
+
     
-} )
-
-  
-$(".lis").on('click','.checar', function(){
-  
-   $(this).prev().toggleClass('.chec')
-} )
-
-
+    $(".Lista").on('click','.checar', function(e){
+      e.preventDefault();
+      $(this).parent().toggleClass('chec')
+    });
 
 });
