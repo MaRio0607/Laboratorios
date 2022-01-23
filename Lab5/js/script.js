@@ -6,7 +6,6 @@ $(document).ready(function(){
     $("#ButtonMark").on('click', markAll)
 
 
-
     function addNmae(e){
         e.preventDefault();
         let item =$("#todoText").val();
@@ -14,7 +13,7 @@ $(document).ready(function(){
         if(item != ""){
             $("#todoList").append(`
             <div>
-            <input type="checkbox" name="todo">
+            <input type="checkbox" class="check" name="todo">
             <label> ${item}</label>
             </div>`);
         }
@@ -24,24 +23,17 @@ $(document).ready(function(){
         let todos = document.getElementsByName("todo")
         for(let i = 0; i< todos.length; i++){
             if (todos[i].checked){
-                //todos[i].parentElement.remove()
                 $(todos[i]).parent().remove()
             }
         }
     }
 
     function clearAll(){
-        let todos = document.getElementsByName("todo")
-        for(let i = 0; i< todos.length; i++){
-            todos[i].checked = false
-        }
+        $(".check").prop("checked", false);
     }
 
     function markAll(){
-        let todos = document.getElementsByName("todo")
-        for(let i = 0; i< todos.length; i++){
-            todos[i].checked = true
-        }
+        $(".check").prop("checked", true);
     }
 
   
