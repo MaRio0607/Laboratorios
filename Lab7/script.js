@@ -28,6 +28,7 @@ function addBut(e){
 
 
 $("#animal-buttons").on("click", ".newBut", function(e){
+   $("#animals").empty()
     e.preventDefault();
     let item =$(this).attr("data-type")
     //let item = $('#newBut').attr('data-value');
