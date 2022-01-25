@@ -40,7 +40,7 @@ $("#animal-buttons").on("click", ".newBut", function(e){
           
           respuesta.data.forEach(element => {
             gifList.append(`
-            <div> 
+            <div class= "animal-item"> 
             <p> ratng: ${element.rating} </p>
             <img src = '${element.images.original.url}' /> 
             </div>`  )
