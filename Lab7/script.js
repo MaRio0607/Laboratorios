@@ -33,7 +33,7 @@ $("#animal-buttons").on("click", ".newBut", function(e){
     let item =$(this).attr("data-type")
     //let item = $('#newBut').attr('data-value');
     let peticion = {
-        url:`http://api.giphy.com/v1/gifs/search?q=${item}&api_key=Pm36nbkA2E80pwabtZBC7GGT2c9K88MH&limit=10`,
+        url:`https://api.giphy.com/v1/gifs/search?q=${item}&api_key=Pm36nbkA2E80pwabtZBC7GGT2c9K88MH&limit=10`,
         success: function (respuesta) {
           
           let gifList = $("#animals")
