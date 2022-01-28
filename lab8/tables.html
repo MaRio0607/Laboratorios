@@ -70,7 +70,19 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
+      $.get("/api/tables", function(data) {
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i]);
+          var listGroupItem = $("<li class='list-group-item'>");
 
+          listGroupItem.append($("<h3>").text("Name: " + data[i].name));
+          listGroupItem.append($("<h3>").text("Phone number: " + data[i].phoneNum));
+          listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+          listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniID));
+
+          $(".list-group").append(listGroupItem);
+        }
+      });
 
 
 
