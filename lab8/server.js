@@ -20,6 +20,14 @@ var reservations = [
       email: "juancho",
       uniID: 5438567
     },
+
+    {
+      routeName: 'mario',
+      name: 'mario',
+      phoneNum: 888888,
+      email: 'mariano',
+      uniID: 902380
+    }
     
   ];
   
@@ -47,18 +55,18 @@ app.get("/api/tables", function(req, res) {
   
 // Displays a single character, or returns false
 app.get("/api/tables/:table", function(req, res) {
-    var chosen = req.params.reservation;
-  
-    console.log(chosen);
-  
-    for (var i = 0; i < reservation.length; i++) {
-      if (chosen === reservation[i].routeName) {
-        return res.json(reservation[i]);
-      }
+  var chosen = req.params.character;
+
+  console.log(chosen);
+
+  for (var i = 0; i < characters.length; i++) {
+    if (chosen === characters[i].routeName) {
+      return res.json(characters[i]);
     }
-  
-    return res.json(false);
-  });
+  }
+
+  return res.json(false);
+});
 
 // Create New reservations - takes in JSON input
 app.post("/api/tables", function(req, res) {
@@ -72,7 +80,7 @@ app.post("/api/tables", function(req, res) {
   
     console.log(newReservation);
   
-    characters.push(newReservation);
+    reservations.push(newReservation);
   
     res.json(newReservation);
   });
