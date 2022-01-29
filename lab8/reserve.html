@@ -78,6 +78,28 @@
 
   </div>
 
+
+  <script type="text/javascript">
+    // Question: What does this code do?
+    $(".btn-primary submit").on("click", function(event) {
+      event.preventDefault();
+
+      var newCharacter = {
+        name: $("#reserve-name").val().trim(),
+        phoneNum: $("#reserve-phone").val().trim(),
+        email: $("#reserve-email").val().trim(),
+        uniID: $("#reserve-unique-id").val().trim()
+      };
+
+      // Question: What does this code do??
+      $.post("/api/characters", newCharacter)
+        .then(function(data) {
+          console.log(data);
+          alert("Adding character...");
+        });
+
+    });
+  </script>
 </body>
 
 </html>
