@@ -1,13 +1,13 @@
-let mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const {Schema, model}=require("mongoose");
 
-const TaskSchema = Schema({
+const PostSchema = Schema({
     title:String,
-    description: String,
-    status: {
-        type: Boolean ,
-        default: false
-    }
+    author: String,
+    post_date: {
+        type: Date ,
+        default: Date.now
+    },
+    post_data: String
 })
 
-module.exports = mongoose.model('tasks',TaskSchema)
+module.exports = model('tasks',PostSchema)
