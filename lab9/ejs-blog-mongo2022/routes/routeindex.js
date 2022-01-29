@@ -21,34 +21,17 @@ router.get('/edit/:id', async (req,res) =>{
 });
 
 
-// Ruta que nos permita agregar nuevas tareas que vienen desde un metodo post. Una vez enviada la tarea podemos redireccionar a la pagina principal con res.redirect('/')
-router.post('/newPost', async (req,res) =>{
-
-  let task = new Post(req.body)
-  await  task.save()
-  res.redirect('/')
- });
-
- 
-// Ruta para editar los datos. Primero necesitamos buscarlos en base a un id que ya me llega desde la ruta. Metodo de busqueda findById(). 
-// Los editaremos en una pagina aparte llamada 'edit'
-router.get('/edit/:id',   async(req,res) =>{
-
-  let id = req.params.id
-  let task  = await Task.findById(id)
-  res.render('edit',{task})
-
-})
 
 // # PENDIENTE
 router.post('/edit/:id', async (req,res) =>{
-
+  await Post.updateOne({_id:req.params.id},req.body)
   res.redirect("/")
 });
 
 // # PENDIENTE
 router.post('/delete/:id', async (req,res) =>{
-
+  let id = req.params.id
+  await Post.remove({_id:id})
   res.redirect("/")
 });
 
