@@ -80,23 +80,36 @@
 
 
   <script type="text/javascript">
-    // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
+    var table_length;
+  $.get("/api/tables", function(data){
+        table_length = data.length;
+        console.log(`Table length adentro del get ${table_length}`);
+      });
+  $("#add-btn").on("click", function(event) {
       event.preventDefault();
-
-      var newReservation = {
+      var newTable = {
         name: $("#reserve-name").val().trim(),
-        phoneNum: $("#reserve-phone").val().trim(),
+        phone_number: $("#reserve-phone").val().trim(),
         email: $("#reserve-email").val().trim(),
-        uniID: $("#reserve-unique-id").val().trim()
+        id: $("#reserve-unique-id").val().trim()
       };
-
-      // Question: What does this code do??
-      $.post("/api/tables", newReservation)
+      
+      if(table_length <5){
+        $.post("/api/tables", newTable)
         .then(function(data) {
           console.log(data);
           alert("Adding table...");
         });
+      }else {
+        $.post("/api/tablesWait", newTable)
+        .then(function(data) {
+          console.log(data);
+          alert("Adding table...");
+        });
+        alert("se añadirá a la lista, no hay espacio");
+      }
+      
+      
 
     });
   </script>

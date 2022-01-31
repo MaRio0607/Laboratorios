@@ -30,6 +30,23 @@ var reservations = [
     }
     
   ];
+
+  var tablesWait = [
+    {
+      routeName: "misa",
+      name: "wait",
+      phone_number: 1234567,
+      email: "misa@gmai.com",
+      id: 1
+    },
+    {
+      routeName: "misa2",
+      name: "wait2",
+      phone_number: 1234567,
+      email: "misa@gmai.com",
+      id: 2
+    }
+  ];
   
 
 // Routes
@@ -48,9 +65,12 @@ var reservations = [
     res.sendFile(path.join(__dirname, "tables.html"));
   });
 
-  // Displays all Reservatios
 app.get("/api/tables", function(req, res) {
     return res.json(reservations);
+  });
+
+  app.get("/api/waitlist", function(req, res) {
+    return res.json(tablesWait);
   });
   
 // Displays a single character, or returns false
@@ -65,17 +85,29 @@ app.get("/api/tables/:table", function(req, res) {
     }
   }
 
+  app.get("/api/waitlist/:table", function(req, res) {
+    var chosen = req.params.table;
+  
+    console.log(chosen);
+  
+    for (var i = 0; i < tablesWait.length; i++) {
+      if (chosen === tablesWait[i].routeName) {
+        return res.json(tablesWait[i]);
+      }
+    }
+  
+    return res.json(false);
+  });
+
   return res.json(false);
 });
 
 // Create New reservations - takes in JSON input
 app.post("/api/tables", function(req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
+    
     var newReservation = req.body;
   
-    // Using a RegEx Pattern to remove spaces from newReservation
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+
     newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
   
     console.log(newReservation);
@@ -85,6 +117,19 @@ app.post("/api/tables", function(req, res) {
     res.json(newReservation);
   });
   
+
+  app.post("/api/tablesWait", function(req, res) {
+
+    var newtable = req.body;
+  
+    newtable.routeName = newtable.name.replace(/\s+/g, "").toLowerCase();
+  
+    console.log(newtable);
+  
+    tablesWait.push(newtable);
+  
+    res.json(newtable);
+  });
 
 // Starts the server to begin listening
 // =============================================================
